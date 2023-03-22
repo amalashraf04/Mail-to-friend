@@ -15,13 +15,13 @@ app.post("/",async(req,res)=>{
     let transporter = nodeMailer.createTransport({
        service: 'gmail',
        auth: {
-        user: 'amalashraf04@gmail.com',
-        pass: 'xwyqvkduyyedqfzj'
+        user: 'amaltest04@gmail.com',
+        pass: 'tosxiukktyphavus'
        } 
       });
 
       const message ={
-        from: 'amalashraf04@gmail.com', 
+        from: 'amaltest04@gmail.com', 
          to: `${email}`, 
         //to: 'amaltest04@gmail.com',
         subject: "node-mailer-assignment", 
