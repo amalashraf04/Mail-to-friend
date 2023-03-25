@@ -22,8 +22,8 @@ app.post("/",async(req,res)=>{
 
       const message ={
         from: 'amaltest04@gmail.com', 
-         to: `${email}`, 
-        //to: 'amaltest04@gmail.com',
+         to: 'amalashraf04@gmail.com', 
+       
         subject: "node-mailer-assignment", 
         text: "Hello Friend,This is the testing email for  Mail-a-friend Assignment", 
       }
