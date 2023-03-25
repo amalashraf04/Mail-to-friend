@@ -1,40 +1,29 @@
-const bodyParser = require("body-parser");
-const express = require("express");
-const nodeMailer = require("nodemailer");
 
-const app = new express()
-const port = 3000;
+const nodemailer = require('nodemailer');
+  
 
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
 
-
-app.post("/",async(req,res)=>{
-    const{email} = req.body;
-    
-    let transporter = nodeMailer.createTransport({
-       service: 'gmail',
-       auth: {
         user: 'amaltest04@gmail.com',
         pass: 'tosxiukktyphavus'
-       } 
-      });
+        
+    }
+});
 
-      const message ={
-        from: 'amaltest04@gmail.com', 
-          to: 'amalashraf04@gmail.com',
-        subject: "node-mailer-assignment", 
-        text: "Hello Friend,This is the testing email for  Mail-a-friend Assignment", 
-      }
-    
-      let info = await transporter.sendMail(message);
-    
-      console.log("Message sent: %s", info.messageId);
+let message = {
+    from: 'amaltest04@gmail.com',
+  to: 'amalashraf04@gmail.com',
+   
+    subject: 'node-mailer-assignment',
+    text: 'Hello Friend,This is the testing email for  Mail-a-friend Assignment'
+};
 
-       res.send("Email sent successfully !");
-})
-
-
-app.listen(port,()=>{
-    console.log(`The server running at http://localhost:${port}`);
-})
+transporter.sendMail(message, function(error, info){
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Email sent: ' + info.response);
+    }
+});
